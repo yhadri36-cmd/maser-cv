@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مسار CV | صانع السيرة الذاتية الذكي المتوافق مع ATS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0f172a;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --border: #cbd5e1;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .brand h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .brand span {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-light {
+      background: #e2e8f0;
+      color: var(--primary);
+    }
+
+    .btn-light:hover {
+      background: #cbd5e1;
+    }
+
+    .btn-danger {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .btn-danger:hover {
+      background: #fecaca;
+    }
+
+    .container {
+      max-width: 1380px;
+      margin: 24px auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+    }
+
+    .panel h2 {
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--bg);
+      color: var(--primary);
+    }
+
+    .ats-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+    }
+
+    .ats-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .ats-bar {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .ats-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      transition: width 0.25s ease, background-color 0.25s ease;
+    }
+
+    .ats-tips {
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding-inline-start: 16px;
+    }
+
+    .template-switch {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .tpl-btn {
+      padding: 9px 8px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--text);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tpl-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .density-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .density-row select {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .lang-box {
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .lang-box-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .field {
+      margin-bottom: 12px;
+    }
+
+    .field-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .toggle-check {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      color: var(--accent) !important;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .toggle-check input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .field input[type="text"],
+    .field input[type="email"],
+    .field textarea {
+      width: 100%;
+      padding: 9px 11px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      color: var(--text);
+      background: #ffffff;
+    }
+
+    .field input:disabled,
+    .field textarea:disabled {
+      background: #f1f5f9;
+      color: #94a3b8;
+    }
+
+    .field textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .hidden-block {
+      display: none !important;
+    }
+
+    /* Preview wrapper supporting single or two separate pages */
+    .preview-pages {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .cv-sheet {
+      background: #ffffff;
+      color: #0f172a;
+      width: 100%;
+      padding: 32px 36px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      min-height: 820px;
+      font-family: 'Cairo', 'Inter', sans-serif;
+    }
+
+    .cv-sheet.compact {
+      padding: 22px 28px;
+      font-size: 0.94rem;
+    }
+
+    .cv-sheet.sheet-rtl {
+      direction: rtl;
+      text-align: right;
+      font-family: 'Cairo', 'Inter', sans-serif;
+    }
+
+    .cv-sheet.sheet-ltr {
+      direction: ltr;
+      text-align: left;
+      font-family: 'Inter', 'Cairo', sans-serif;
+    }
+
+    .cv-header {
+      width: 100%;
+      text-align: center;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .cv-name {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.25;
+      width: 100%;
+      text-align: center;
+    }
+
+    .cv-role {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 3px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .cv-contact {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #334155;
+      margin-top: 6px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .cv-section {
+      width: 100%;
+      margin-bottom: 13px;
+    }
+
+    .cv-section.hidden-section {
+      display: none !important;
+    }
+
+    .cv-sheet.compact .cv-section {
+      margin-bottom: 9px;
+    }
+
+    .cv-section-title {
+      width: 100%;
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: #0f172a;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 3px;
+      margin-bottom: 6px;
+    }
+
+    .cv-list {
+      width: 100%;
+      padding-inline-start: 22px;
+      list-style-position: outside;
+      font-size: 0.89rem;
+    }
+
+    .cv-list li {
+      margin-bottom: 4px;
+    }
+
+    .cv-text {
+      width: 100%;
+      font-size: 0.89rem;
+      white-space: pre-line;
+    }
+
+    .cv-sheet.sheet-rtl .cv-text {
+      text-align: justify;
+    }
+
+    .cv-sheet.sheet-ltr .cv-text {
+      text-align: left;
+    }
+
+    @media (max-width: 960px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 0mm;
+    }
+
+    @media print {
+      header,
+      .editor-panel,
+      .preview-heading,
+      footer,
+      .watermark,
+      [class*="watermark"],
+      [id*="watermark"] {
+        display: none !important;
+        visibility: hidden !important;
+      }
+
+      html,
+      body {
+        background: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 210mm !important;
+        height: auto !important;
+        overflow: visible !important;
+      }
+
+      .container,
+      .preview-panel,
+      .preview-pages {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 210mm !important;
+        max-width: 210mm !important;
+        gap: 0 !important;
+      }
+
+      .cv-sheet,
+      .cv-sheet.compact {
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 14mm 16mm !important;
+        margin: 0 !important;
+        min-height: auto !important;
+        width: 210mm !important;
+        max-width: 210mm !important;
+        box-sizing: border-box !important;
+      }
+
+      .cv-sheet.page-break-after {
+        break-after: page !important;
+        page-break-after: always !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>مسار CV</h1>
+      <span>صانع السيرة الذاتية أحادي العمود المتوافق مع أنظمة ATS لحديثي التخرج</span>
+    </div>
+    <div class="toolbar">
+      <button class="btn btn-light" type="button" onclick="fillSample()">بيانات تجريبية</button>
+      <button class="btn btn-danger" type="button" onclick="clearForm()">مسح البيانات</button>
+      <button class="btn btn-primary" type="button" onclick="printCleanCV()">طباعة / حفظ PDF</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel editor-panel">
+      <h2>إعداد النموذج وتحديد الأقسام المطلوبة</h2>
+
+      <div class="ats-box">
+        <div class="ats-top">
+          <span>مؤشر جاهزية ATS</span>
+          <span id="atsScore">0%</span>
+        </div>
+        <div class="ats-bar">
+          <div id="atsFill" class="ats-fill"></div>
+        </div>
+        <ul id="atsTips" class="ats-tips"></ul>
+      </div>
+
+      <div class="template-switch">
+        <button id="btn-ar" class="tpl-btn active" type="button" onclick="setTemplate('ar')">نموذج عربي</button>
+        <button id="btn-en" class="tpl-btn" type="button" onclick="setTemplate('en')">English ATS</button>
+        <button id="btn-bi" class="tpl-btn" type="button" onclick="setTemplate('bi')">ثنائي اللغة (صفحتان)</button>
+      </div>
+
+      <div class="density-row">
+        <label for="densitySelect">كثافة المحتوى والمسافات:</label>
+        <select id="densitySelect" onchange="setDensity(this.value)">
+          <option value="normal">مريح (افتراضي)</option>
+          <option value="compact">مضغوط (مناسب لصفحة واحدة)</option>
+        </select>
+      </div>
+
+      <!-- بيانات التواصل المشتركة -->
+      <div class="grid-2">
+        <div class="field">
+          <div class="field-header">
+            <label for="email">البريد الإلكتروني / Email</label>
+          </div>
+          <input id="email" type="email" placeholder="mohammed@example.com" oninput="onInputChange()" />
+        </div>
+        <div class="field">
+          <div class="field-header">
+            <label for="phone">رقم الجوال والمدينة / Phone & City</label>
+          </div>
+          <input id="phone" type="text" placeholder="05XXXXXXXX - الرياض" oninput="onInputChange()" />
+        </div>
+      </div>
+
+      <!-- قسم البيانات العربية -->
+      <div id="arEditorBox" class="lang-box">
+        <div class="lang-box-title">البيانات العربية (الصفحة الأولى)</div>
+
+        <div class="grid-2">
+          <div class="field">
+            <div class="field-header">
+              <label for="arName">الاسم الثنائي</label>
+            </div>
+            <input id="arName" type="text" placeholder="مثال: محمد العتيبي" oninput="onInputChange()" />
+          </div>
+          <div class="field">
+            <div class="field-header">
+              <label for="arRole">المسمى الوظيفي المستهدف</label>
+            </div>
+            <input id="arRole" type="text" placeholder="مثال: محلل بيانات ومطور تقارير" oninput="onInputChange()" />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="arObjective">الهدف الوظيفي</label>
+            <label class="toggle-check">
+              <input id="incArObjective" type="checkbox" checked onchange="onInputChange()" />
+              تضمين القسم
+            </label>
+          </div>
+          <textarea id="arObjective" placeholder="اكتب هدفك الوظيفي بوضوح ودقة..." oninput="onInputChange()"></textarea>
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="arEducation">التعليم والمؤهلات (سطر لكل مؤهل)</label>
+            <label class="toggle-check">
+              <input id="incArEducation" type="checkbox" checked onchange="onInputChange()" />
+              تضمين القسم
+            </label>
+          </div>
+          <textarea id="arEducation" placeholder="بكالوريوس في نظم المعلومات - جامعة الملك سعود" oninput="onInputChange()"></textarea>
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="arExperience">الخبرات والمشاريع (سطر لكل نقطة)</label>
+            <label class="toggle-check">
+              <input id="incArExperience" type="checkbox" checked onchange="onInputChange()" />
+              تضمين القسم
+            </label>
+          </div>
+          <textarea id="arExperience" placeholder="ألغِ التحديد إذا لم يكن لديك خبرات أو مشاريع..." oninput="onInputChange()"></textarea>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <div class="field-header">
+              <label for="arCertifications">الدورات والشهادات</label>
+              <label class="toggle-check">
+                <input id="incArCertifications" type="checkbox" checked onchange="onInputChange()" />
+                تضمين القسم
+              </label>
+            </div>
+            <textarea id="arCertifications" placeholder="دورة أو شهادة معتمدة" oninput="onInputChange()"></textarea>
+          </div>
+          <div class="field">
+            <div class="field-header">
+              <label for="arLanguages">اللغات</label>
+              <label class="toggle-check">
+                <input id="incArLanguages" type="checkbox" checked onchange="onInputChange()" />
+                تضمين القسم
+              </label>
+            </div>
+            <textarea id="arLanguages" placeholder="العربية (اللغة الأم)، الإنجليزية (متوسط / جيد)" oninput="onInputChange()"></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="arSkills">المهارات (مفصولة بفاصلة)</label>
+            <label class="toggle-check">
+              <input id="incArSkills" type="checkbox" checked onchange="onInputChange()" />
+              تضمين القسم
+            </label>
+          </div>
+          <input id="arSkills" type="text" placeholder="تحليل البيانات، إعداد التقارير، Excel، العمل ضمن فريق" oninput="onInputChange()" />
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="arAchievements">الإنجازات (سطر لكل إنجاز)</label>
+            <label class="toggle-check">
+              <input id="incArAchievements" type="checkbox" checked onchange="onInputChange()" />
+              تضمين القسم
+            </label>
+          </div>
+          <textarea id="arAchievements" placeholder="ألغِ التحديد إذا لم يكن لديك إنجازات..." oninput="onInputChange()"></textarea>
+        </div>
+      </div>
+
+      <!-- قسم البيانات الإنجليزية -->
+      <div id="enEditorBox" class="lang-box hidden-block">
+        <div class="lang-box-title">English Data (Second Page in Bilingual Mode)</div>
+
+        <div class="grid-2">
+          <div class="field">
+            <div class="field-header">
+              <label for="enName">First & Last Name</label>
+            </div>
+            <input id="enName" type="text" placeholder="e.g., Mohammed Alotaibi" oninput="onInputChange()" />
+          </div>
+          <div class="field">
+            <div class="field-header">
+              <label for="enRole">Target Role</label>
+            </div>
+            <input id="enRole" type="text" placeholder="e.g., Data & Reporting Specialist" oninput="onInputChange()" />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="enObjective">Career Objective</label>
+            <label class="toggle-check">
+              <input id="incEnObjective" type="checkbox" checked onchange="onInputChange()" />
+              Include Section
+            </label>
+          </div>
+          <textarea id="enObjective" placeholder="Write a clear and concise career objective..." oninput="onInputChange()"></textarea>
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="enEducation">Education (one per line)</label>
+            <label class="toggle-check">
+              <input id="incEnEducation" type="checkbox" checked onchange="onInputChange()" />
+              Include Section
+            </label>
+          </div>
+          <textarea id="enEducation" placeholder="B.Sc. in Information Systems - King Saud University" oninput="onInputChange()"></textarea>
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="enExperience">Experience & Projects (one per line)</label>
+            <label class="toggle-check">
+              <input id="incEnExperience" type="checkbox" checked onchange="onInputChange()" />
+              Include Section
+            </label>
+          </div>
+          <textarea id="enExperience" placeholder="Uncheck if you have no experience or projects yet..." oninput="onInputChange()"></textarea>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <div class="field-header">
+              <label for="enCertifications">Certifications & Courses</label>
+              <label class="toggle-check">
+                <input id="incEnCertifications" type="checkbox" checked onchange="onInputChange()" />
+                Include Section
+              </label>
+            </div>
+            <textarea id="enCertifications" placeholder="Course or certification title" oninput="onInputChange()"></textarea>
+          </div>
+          <div class="field">
+            <div class="field-header">
+              <label for="enLanguages">Languages</label>
+              <label class="toggle-check">
+                <input id="incEnLanguages" type="checkbox" checked onchange="onInputChange()" />
+                Include Section
+              </label>
+            </div>
+            <textarea id="enLanguages" placeholder="Arabic (Native), English (Intermediate)" oninput="onInputChange()"></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="enSkills">Skills (comma-separated)</label>
+            <label class="toggle-check">
+              <input id="incEnSkills" type="checkbox" checked onchange="onInputChange()" />
+              Include Section
+            </label>
+          </div>
+          <input id="enSkills" type="text" placeholder="Excel, SQL, Python, Data Analysis, Report Writing" oninput="onInputChange()" />
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="enAchievements">Achievements (one per line)</label>
+            <label class="toggle-check">
+              <input id="incEnAchievements" type="checkbox" checked onchange="onInputChange()" />
+              Include Section
+            </label>
+          </div>
+          <textarea id="enAchievements" placeholder="Uncheck if you have no achievements yet..." oninput="onInputChange()"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel preview-panel">
+      <h2 class="preview-heading">معاينة السيرة الذاتية (Single-Column ATS)</h2>
+      <div id="previewPages" class="preview-pages"></div>
+    </section>
+  </main>
+
+  <script>
+    const STORAGE_KEY = 'masar_cv_data_v5';
+    let currentTemplate = 'ar';
+    let currentDensity = 'normal';
+
+    const arSample = {
+      name: 'محمد العتيبي',
+      role: 'محلل بيانات ومطور تقارير',
+      objective:
+        'الالتحاق بفرصة عمل في الرياض تتيح توظيف مهاراتي في تنظيم البيانات وإعداد التقارير التحليلية وبناء نماذج عمل واضحة ومرتبة تدعم فرق العمل في اتخاذ القرار وتطوير الأداء التشغيلي.',
+      education: 'بكالوريوس في نظم المعلومات - جامعة الملك سعود (الرياض)',
+      experience:
+        'إعداد تقارير أداء وجداول متابعة منظمة وتدقيق البيانات لضمان دقة المخرجات\nتنفيذ مشاريع تطبيقية وتدريبية متوافقة مع معايير الجودة والتوثيق',
+      certifications:
+        'تحليل البيانات وبناء الجداول الاحترافية\nأساسيات إدارة المشاريع والتقارير التشغيلية',
+      skills: 'تحليل البيانات، إعداد التقارير، Microsoft Excel، SQL، العمل ضمن فريق',
+      achievements:
+        'تصميم نموذج متابعة وتنظيم بيانات قلل وقت إعداد التقارير الدورية بشكل ملحوظ\nتقديم مشروع تخرج متكامل نال إشادة لجنة التقييم',
+      languages: 'العربية (اللغة الأم)، الإنجليزية (متوسط / جيد)'
+    };
+
+    const enSample = {
+      name: 'Mohammed Alotaibi',
+      role: 'Data & Reporting Specialist',
+      objective:
+        'Entry-level data and reporting specialist in Riyadh seeking to apply structured data organization, analytical reporting, and clear documentation skills to support team decision-making and operational efficiency.',
+      education: 'B.Sc. in Information Systems - King Saud University (Riyadh)',
+      experience:
+        'Prepared structured performance reports, tracking sheets, and data quality checks to ensure accurate outputs\nCompleted applied academic and training projects aligned with quality and documentation standards',
+      certifications:
+        'Data Analysis & Spreadsheet Modeling\nOperational Reporting & Project Fundamentals',
+      skills: 'Microsoft Excel, SQL, Data Analysis, Report Writing, Documentation, Teamwork',
+      achievements:
+        'Built a structured tracking template that noticeably reduced recurring reporting preparation time\nDelivered a comprehensive graduation project commended by the evaluation committee',
+      languages: 'Arabic (Native), English (Intermediate)'
+    };
+
+    const titles = {
+      ar: {
+        objective: 'الهدف الوظيفي',
+        education: 'التعليم والمؤهلات',
+        experience: 'الخبرات والمشاريع',
+        certifications: 'الدورات والشهادات',
+        skills: 'المهارات',
+        achievements: 'الإنجازات',
+        languages: 'اللغات',
+        defaultName: 'الاسم الثنائي',
+        defaultRole: 'المسمى الوظيفي المستهدف',
+        defaultContact: 'البريد الإلكتروني - رقم الجوال - المدينة'
+      },
+      en: {
+        objective: 'Career Objective',
+        education: 'Education',
+        experience: 'Experience & Projects',
+        certifications: 'Certifications & Courses',
+        skills: 'Skills',
+        achievements: 'Achievements',
+        languages: 'Languages',
+        defaultName: 'First & Last Name',
+        defaultRole: 'Target Role',
+        defaultContact: 'Email - Phone & City'
+      }
+    };
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function getLines(text) {
+      return (text || '')
+        .split('\n')
+        .map(line => line.trim())
+        .filter(Boolean);
+    }
+
+    function syncEditorVisibility() {
+      const arBox = document.getElementById('arEditorBox');
+      const enBox = document.getElementById('enEditorBox');
+
+      arBox.classList.toggle('hidden-block', currentTemplate === 'en');
+      enBox.classList.toggle('hidden-block', currentTemplate === 'ar');
+
+      const pairs = [
+        ['incArObjective', 'arObjective'],
+        ['incArEducation', 'arEducation'],
+        ['incArExperience', 'arExperience'],
+        ['incArCertifications', 'arCertifications'],
+        ['incArSkills', 'arSkills'],
+        ['incArAchievements', 'arAchievements'],
+        ['incArLanguages', 'arLanguages'],
+        ['incEnObjective', 'enObjective'],
+        ['incEnEducation', 'enEducation'],
+        ['incEnExperience', 'enExperience'],
+        ['incEnCertifications', 'enCertifications'],
+        ['incEnSkills', 'enSkills'],
+        ['incEnAchievements', 'enAchievements'],
+        ['incEnLanguages', 'enLanguages']
+      ];
+
+      pairs.forEach(([chkId, inpId]) => {
+        const chk = document.getElementById(chkId);
+        const inp = document.getElementById(inpId);
+        if (chk && inp) inp.disabled = !chk.checked;
+      });
+    }
+
+    function setTemplate(tpl) {
+      currentTemplate = ['ar', 'en', 'bi'].includes(tpl) ? tpl : 'ar';
+      document.querySelectorAll('.tpl-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('btn-' + currentTemplate);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      syncEditorVisibility();
+      saveState();
+      renderCV();
+    }
+
+    function setDensity(mode) {
+      currentDensity = mode === 'compact' ? 'compact' : 'normal';
+      document.getElementById('densitySelect').value = currentDensity;
+      saveState();
+      renderCV();
+    }
+
+    function getFormData() {
+      return {
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+
+        arName: document.getElementById('arName').value.trim(),
+        arRole: document.getElementById('arRole').value.trim(),
+        incArObjective: document.getElementById('incArObjective').checked,
+        arObjective: document.getElementById('arObjective').value.trim(),
+        incArEducation: document.getElementById('incArEducation').checked,
+        arEducation: document.getElementById('arEducation').value.trim(),
+        incArExperience: document.getElementById('incArExperience').checked,
+        arExperience: document.getElementById('arExperience').value.trim(),
+        incArCertifications: document.getElementById('incArCertifications').checked,
+        arCertifications: document.getElementById('arCertifications').value.trim(),
+        incArSkills: document.getElementById('incArSkills').checked,
+        arSkills: document.getElementById('arSkills').value.trim(),
+        incArAchievements: document.getElementById('incArAchievements').checked,
+        arAchievements: document.getElementById('arAchievements').value.trim(),
+        incArLanguages: document.getElementById('incArLanguages').checked,
+        arLanguages: document.getElementById('arLanguages').value.trim(),
+
+        enName: document.getElementById('enName').value.trim(),
+        enRole: document.getElementById('enRole').value.trim(),
+        incEnObjective: document.getElementById('incEnObjective').checked,
+        enObjective: document.getElementById('enObjective').value.trim(),
+        incEnEducation: document.getElementById('incEnEducation').checked,
+        enEducation: document.getElementById('enEducation').value.trim(),
+        incEnExperience: document.getElementById('incEnExperience').checked,
+        enExperience: document.getElementById('enExperience').value.trim(),
+        incEnCertifications: document.getElementById('incEnCertifications').checked,
+        enCertifications: document.getElementById('enCertifications').value.trim(),
+        incEnSkills: document.getElementById('incEnSkills').checked,
+        enSkills: document.getElementById('enSkills').value.trim(),
+        incEnAchievements: document.getElementById('incEnAchievements').checked,
+        enAchievements: document.getElementById('enAchievements').value.trim(),
+        incEnLanguages: document.getElementById('incEnLanguages').checked,
+        enLanguages: document.getElementById('enLanguages').value.trim()
+      };
+    }
+
+    function buildSingleSheetHtml(lang, data, addPageBreak) {
+      const isEn = lang === 'en';
+      const lbl = isEn ? titles.en : titles.ar;
+      const dirClass = isEn ? 'sheet-ltr' : 'sheet-rtl';
+      const dirAttr = isEn ? 'ltr' : 'rtl';
+      const compactClass = currentDensity === 'compact' ? 'compact' : '';
+      const breakClass = addPageBreak ? 'page-break-after' : '';
+
+      const nameVal = (isEn ? data.enName : data.arName) || lbl.defaultName;
+      const roleVal = (isEn ? data.enRole : data.arRole) || lbl.defaultRole;
+      const contactParts = [data.email, data.phone].filter(Boolean);
+      const contactVal = contactParts.length ? contactParts.join(' - ') : lbl.defaultContact;
+
+      const incObjective = isEn ? data.incEnObjective : data.incArObjective;
+      const objectiveVal = isEn ? data.enObjective : data.arObjective;
+
+      const incEducation = isEn ? data.incEnEducation : data.incArEducation;
+      const eduLines = incEducation ? getLines(isEn ? data.enEducation : data.arEducation) : [];
+
+      const incExperience = isEn ? data.incEnExperience : data.incArExperience;
+      const expLines = incExperience ? getLines(isEn ? data.enExperience : data.arExperience) : [];
+
+      const incCertifications = isEn ? data.incEnCertifications : data.incArCertifications;
+      const certLines = incCertifications ? getLines(isEn ? data.enCertifications : data.arCertifications) : [];
+
+      const incSkills = isEn ? data.incEnSkills : data.incArSkills;
+      const skillsVal = isEn ? data.enSkills : data.arSkills;
+
+      const incAchievements = isEn ? data.incEnAchievements : data.incArAchievements;
+      const achLines = incAchievements ? getLines(isEn ? data.enAchievements : data.arAchievements) : [];
+
+      const incLanguages = isEn ? data.incEnLanguages : data.incArLanguages;
+      const langVal = isEn ? data.enLanguages : data.arLanguages;
+
+      const listHtml = lines =>
+        `<ul class="cv-list">${lines.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+
+      return `
+        <article class="cv-sheet ${dirClass} ${compactClass} ${breakClass}" dir="${dirAttr}">
+          <div class="cv-header">
+            <div class="cv-name">${escapeHtml(nameVal)}</div>
+            <div class="cv-role">${escapeHtml(roleVal)}</div>
+            <div class="cv-contact">${escapeHtml(contactVal)}</div>
+          </div>
+
+          ${incObjective && objectiveVal ? `
+            <div class="cv-section">
+              <div class="cv-section-title">${escapeHtml(lbl.objective)}</div>
+              <p class="cv-text">${escapeHtml(objectiveVal)}</p>
+            </div>
+          ` : ''}
+
+          ${eduLines.length ? `
+            <div class="cv-section">
+              <div class="cv-section-title">${escapeHtml(lbl.education)}</div>
+              ${listHtml(eduLines)}
+            </div>
+          ` : ''}
+
+          ${expLines.length ? `
+            <div class="cv-section">
+              <div class="cv-section-title">${escapeHtml(lbl.experience)}</div>
+              ${listHtml(expLines)}
+            </div>
+          ` : ''}
+
+          ${certLines.length ? `
+            <div class="cv-section">
+              <div class="cv-section-title">${escapeHtml(lbl.certifications)}</div>
+              ${listHtml(certLines)}
+            </div>
+          ` : ''}
+
+          ${incSkills && skillsVal ? `
+            <div class="cv-section">
+              <div class="cv-section-title">${escapeHtml(lbl.skills)}</div>
+              <p class="cv-text">${escapeHtml(skillsVal)}</p>
+            </div>
+          ` : ''}
+
+          ${achLines.length ? `
+            <div class="cv-section">
+              <div class="cv-section-title">${escapeHtml(lbl.achievements)}</div>
+              ${listHtml(achLines)}
+            </div>
+          ` : ''}
+
+          ${incLanguages && langVal ? `
+            <div class="cv-section">
+              <div class="cv-section-title">${escapeHtml(lbl.languages)}</div>
+              <p class="cv-text">${escapeHtml(langVal)}</p>
+            </div>
+          ` : ''}
+        </article>
+      `;
+    }
+
+    function updateAtsScore(data) {
+      let score = 0;
+      const tips = [];
+
+      const checkAr = currentTemplate === 'ar' || currentTemplate === 'bi';
+      const checkEn = currentTemplate === 'en' || currentTemplate === 'bi';
+
+      if (data.email && data.phone) score += 20;
+      else tips.push('أدخل البريد الإلكتروني ورقم الجوال والمدينة لسهولة التواصل.');
+
+      if (checkAr) {
+        if (data.arName && data.arRole) score += 20;
+        else tips.push('أضف الاسم الثنائي والمسمى الوظيفي العربي.');
+        if (data.incArEducation && data.arEducation) score += 15;
+        else tips.push('أضف المؤهل العلمي العربي.');
+      }
+
+      if (checkEn) {
+        if (data.enName && data.enRole) score += 20;
+        else tips.push('Add First & Last Name and Target Role in English.');
+        if (data.incEnEducation && data.enEducation) score += 15;
+        else tips.push('Add Education in English.');
+      }
+
+      const hasSkillsOrExp =
+        (checkAr && ((data.incArSkills && data.arSkills) || (data.incArExperience && data.arExperience) || (data.incArAchievements && data.arAchievements))) ||
+        (checkEn && ((data.incEnSkills && data.enSkills) || (data.incEnExperience && data.enExperience) || (data.incEnAchievements && data.enAchievements)));
+
+      if (hasSkillsOrExp) score += 25;
+      else tips.push('فعّل المهارات أو الخبرات أو الإنجازات وأضف محتوى واضحاً.');
+
+      if (score > 100) score = 100;
+
+      const scoreEl = document.getElementById('atsScore');
+      const fillEl = document.getElementById('atsFill');
+      const tipsEl = document.getElementById('atsTips');
+
+      scoreEl.textContent = score + '%';
+      fillEl.style.width = score + '%';
+
+      if (score >= 80) fillEl.style.backgroundColor = '#15803d';
+      else if (score >= 50) fillEl.style.backgroundColor = '#2563eb';
+      else fillEl.style.backgroundColor = '#b45309';
+
+      if (!tips.length) {
+        tipsEl.innerHTML = '<li>السيرة الذاتية منظمة ومناسبة لأنظمة ATS.</li>';
+      } else {
+        tipsEl.innerHTML = tips.map(t => `<li>${escapeHtml(t)}</li>`).join('');
+      }
+    }
+
+    function renderCV() {
+      syncEditorVisibility();
+      const data = getFormData();
+      const pagesEl = document.getElementById('previewPages');
+
+      if (currentTemplate === 'ar') {
+        pagesEl.innerHTML = buildSingleSheetHtml('ar', data, false);
+      } else if (currentTemplate === 'en') {
+        pagesEl.innerHTML = buildSingleSheetHtml('en', data, false);
+      } else {
+        pagesEl.innerHTML =
+          buildSingleSheetHtml('ar', data, true) +
+          buildSingleSheetHtml('en', data, false);
+      }
+
+      updateAtsScore(data);
+    }
+
+    function fillSample() {
+      document.getElementById('email').value = 'mohammed@example.com';
+      document.getElementById('phone').value = '+966 50 000 0000 - الرياض';
+
+      document.getElementById('arName').value = arSample.name;
+      document.getElementById('arRole').value = arSample.role;
+      document.getElementById('incArObjective').checked = true;
+      document.getElementById('arObjective').value = arSample.objective;
+      document.getElementById('incArEducation').checked = true;
+      document.getElementById('arEducation').value = arSample.education;
+      document.getElementById('incArExperience').checked = true;
+      document.getElementById('arExperience').value = arSample.experience;
+      document.getElementById('incArCertifications').checked = true;
+      document.getElementById('arCertifications').value = arSample.certifications;
+      document.getElementById('incArSkills').checked = true;
+      document.getElementById('arSkills').value = arSample.skills;
+      document.getElementById('incArAchievements').checked = true;
+      document.getElementById('arAchievements').value = arSample.achievements;
+      document.getElementById('incArLanguages').checked = true;
+      document.getElementById('arLanguages').value = arSample.languages;
+
+      document.getElementById('enName').value = enSample.name;
+      document.getElementById('enRole').value = enSample.role;
+      document.getElementById('incEnObjective').checked = true;
+      document.getElementById('enObjective').value = enSample.objective;
+      document.getElementById('incEnEducation').checked = true;
+      document.getElementById('enEducation').value = enSample.education;
+      document.getElementById('incEnExperience').checked = true;
+      document.getElementById('enExperience').value = enSample.experience;
+      document.getElementById('incEnCertifications').checked = true;
+      document.getElementById('enCertifications').value = enSample.certifications;
+      document.getElementById('incEnSkills').checked = true;
+      document.getElementById('enSkills').value = enSample.skills;
+      document.getElementById('incEnAchievements').checked = true;
+      document.getElementById('enAchievements').value = enSample.achievements;
+      document.getElementById('incEnLanguages').checked = true;
+      document.getElementById('enLanguages').value = enSample.languages;
+
+      onInputChange();
+    }
+
+    function clearForm() {
+      const textIds = [
+        'email', 'phone',
+        'arName', 'arRole', 'arObjective', 'arEducation', 'arExperience', 'arCertifications', 'arSkills', 'arAchievements', 'arLanguages',
+        'enName', 'enRole', 'enObjective', 'enEducation', 'enExperience', 'enCertifications', 'enSkills', 'enAchievements', 'enLanguages'
+      ];
+      textIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+
+      const checkIds = [
+        'incArObjective', 'incArEducation', 'incArExperience', 'incArCertifications', 'incArSkills', 'incArAchievements', 'incArLanguages',
+        'incEnObjective', 'incEnEducation', 'incEnExperience', 'incEnCertifications', 'incEnSkills', 'incEnAchievements', 'incEnLanguages'
+      ];
+      checkIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.checked = true;
+      });
+
+      localStorage.removeItem(STORAGE_KEY);
+      renderCV();
+    }
+
+    function saveState() {
+      const payload = {
+        template: currentTemplate,
+        density: currentDensity,
+        data: getFormData()
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        if (parsed.data) {
+          Object.keys(parsed.data).forEach(key => {
+            const el = document.getElementById(key);
+            if (!el) return;
+            if (el.type === 'checkbox') el.checked = Boolean(parsed.data[key]);
+            else el.value = parsed.data[key] || '';
+          });
+        }
+        if (parsed.density) {
+          currentDensity = parsed.density === 'compact' ? 'compact' : 'normal';
+          document.getElementById('densitySelect').value = currentDensity;
+        }
+        if (parsed.template && ['ar', 'en', 'bi'].includes(parsed.template)) {
+          currentTemplate = parsed.template;
+          document.querySelectorAll('.tpl-btn').forEach(btn => btn.classList.remove('active'));
+          const activeBtn = document.getElementById('btn-' + currentTemplate);
+          if (activeBtn) activeBtn.classList.add('active');
+        }
+      } catch (e) {
+        // Ignore storage errors
+      }
+    }
+
+    function onInputChange() {
+      saveState();
+      renderCV();
+    }
+
+    function printCleanCV() {
+      renderCV();
+      const activeName =
+        (currentTemplate === 'en' ? document.getElementById('enName').value : document.getElementById('arName').value) ||
+        'CV';
+      const originalTitle = document.title;
+      document.title = activeName.trim();
+
+      setTimeout(() => {
+        window.print();
+        setTimeout(() => {
+          document.title = originalTitle;
+        }, 300);
+      }, 60);
+    }
+
+    loadState();
+    renderCV();
+  </script>
+</body>
+</html>
